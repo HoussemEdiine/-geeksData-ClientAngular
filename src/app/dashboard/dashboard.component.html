@@ -1,0 +1,47 @@
+<h5>users</h5>
+<table class="table" style="background-color: white">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>email</th>
+    <th>supp</th>
+    <th>edit</th>
+  </tr>
+
+  </thead>
+  <tbody *ngFor="let user of users">
+    <td>{{user.id}}</td>
+
+    <td>{{user.email}}</td>
+    <td>
+      <button style="background-color: darkkhaki" (click)="deleteUser(user.id)">supp</button>
+    </td>
+    <td>
+      <button style="background-color: deeppink" (click)="edit(user.id)">edit</button>
+    </td>
+  </tbody>
+</table>
+<div style="border-bottom:2px  white "></div>
+<h5>Addin user</h5>
+<div class="form-inner">
+  <form  [formGroup]="form" class="signup" (submit)="addUser()">
+    <div class="field">
+      <input type="email" placeholder="Email Address" required  formControlName="email">
+      <div  *ngIf="email()?.touched && email()?.invalid">email required</div>
+      <div  *ngIf="email()?.errors?.minlength">min caracter {{email()?.errors?.minlength.requiredLength}} </div>
+
+    </div>
+    <div class="field">
+      <input type="password" placeholder="Password" required formControlName="password">
+      <div  *ngIf="password()?.touched && password()?.invalid"  >password required</div>
+      <div  *ngIf="password()?.errors?.minlength"> min caracter {{password()?.errors?.minlength.requiredLength}} </div>
+
+    </div>
+    <div class="field btn">
+      <div class="btn-layer">
+      </div>
+      <input  type="submit" value="add user" >
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,23 @@
+<p>edit user </p>
+
+<div class="form-inner">
+  <form  [formGroup]="form" class="signup" (submit)="eddituser()">
+    <div class="field">
+      <input type="email" placeholder="Email Address" required  formControlName="email">
+      <div  *ngIf="email()?.touched && email()?.invalid">email required</div>
+      <div  *ngIf="email()?.errors?.minlength">min caracter {{email()?.errors?.minlength.requiredLength}} </div>
+
+    </div>
+    <div class="field">
+      <input type="password" placeholder="Password" required formControlName="password">
+      <div  *ngIf="password()?.touched && password()?.invalid"  >password required</div>
+      <div  *ngIf="password()?.errors?.minlength"> min caracter {{password()?.errors?.minlength.requiredLength}} </div>
+
+    </div>
+    <div class="field btn">
+      <div class="btn-layer">
+      </div>
+      <input  type="submit" value="update" >
+    </div>
+  </form>
+</div>

@@ -1,0 +1,48 @@
+<div   class="wrapper">
+  <div class="title-text">
+    <div class="title login">
+      Sinup Form</div>
+    <div class="title signup">
+      Signup Form</div>
+  </div>
+  <div  class="form-container">
+    <div class="slide-controls">
+      <input type="radio" name="slide" id="login" checked routerLink ="/">
+      <input type="radio" name="slide" id="signup">
+      <label for="login" class="slide login">Login</label>
+      <label for="signup" class="slide signup">Signup</label>
+      <div class="slider-tab">
+      </div>
+    </div>
+    <div class="form-inner">
+      <form (submit)="submit()" [formGroup]="form" class="signup">
+        <div class="field">
+          <input type="email" placeholder="Email Address" required  formControlName="email">
+          <div  *ngIf="email()?.touched && email()?.invalid"  >email required</div>
+          <div  *ngIf="email()?.errors?.minlength">min caracter {{email()?.errors?.minlength.requiredLength}} </div>
+        </div>
+        <div class="field">
+          <input type="password" placeholder="Password" required formControlName="password">
+           <div  *ngIf="password()?.touched && password()?.invalid"  >password required</div>
+          <div  *ngIf="password()?.errors?.minlength"> min caracter {{password()?.errors?.minlength.requiredLength}} </div>
+        </div>
+        <div class="field">
+          <input type="password" placeholder="Confirm password" required  formControlName="confirmPassword" name="confirmPassword">
+          <div  *ngIf=" confirmPassword()?.touched && confirmPassword()?.invalid"  >password confirmation required</div>
+          <div  *ngIf="confirmPassword()?.errors?.minlength"> min caracter {{confirmPassword()?.errors?.minlength.requiredLength}} </div>
+          <div *ngIf="!match()">
+            not matched
+
+          </div>
+        </div>
+        <div class="field btn">
+          <div class="btn-layer">
+          </div>
+          <input  type="submit" value="Signup" >
+        </div>
+      </form >
+    </div>
+    </div>
+  </div>>
+
+
